@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FixDali - Home Repair Booking</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="phone">
+  <div class="notch"></div>
+  <div class="statusbar"><span class="time">9:41</span><span>📶 🔋</span></div>
+  <div class="appbar" id="appbar">
+    <button class="icon-btn" id="backBtn" onclick="goBack()" style="display:none">←</button>
+    <div class="title" id="appTitle">FixDali</div>
+    <button class="icon-btn" id="rightBtn" onclick="onRightBtn()">⋯</button>
+  </div>
+  <div class="screen-container" id="screenContainer">
+    <!-- SPLASH -->
+    <div class="screen active" id="screen-splash">
+      <div class="splash">
+        <div class="logo">🔧</div>
+        <h1>FixDali</h1>
+        <p>Home repair, made easy.<br>Book trusted technicians in minutes.</p>
+        <button class="btn btn-accent" onclick="showScreen('onboard1')" style="max-width:260px">Get Started</button>
+        <div style="margin-top:16px"><a onclick="showScreen('login')" style="color:#fff;text-decoration:underline;cursor:pointer;font-size:13px">Already have an account? Log in</a></div>
+      </div>
+    </div>
+
+    <!-- ONBOARDING 1 -->
+    <div class="screen" id="screen-onboard1">
+      <img class="onboard-img" id="onb1img" alt="">
+      <h2 style="margin-bottom:6px">Find trusted technicians</h2>
+      <p class="muted">Browse verified plumbers, electricians, carpenters and more near you.</p>
+      <div class="dot-row"><div class="dot active"></div><div class="dot"></div><div class="dot"></div></div>
+      <div class="row" style="margin-top:12px">
+        <button class="btn btn-outline" onclick="showScreen('splash')">Skip</button>
+        <button class="btn btn-primary" onclick="showScreen('onboard2')">Next</button>
+      </div>
+    </div>
+    <div class="screen" id="screen-onboard2">
+      <img class="onboard-img" id="onb2img" alt="">
+      <h2 style="margin-bottom:6px">Book in minutes</h2>
+      <p class="muted">Pick a date, time and address. Get instant confirmation.</p>
+      <div class="dot-row"><div class="dot"></div><div class="dot active"></div><div class="dot"></div></div>
+      <div class="row" style="margin-top:12px">
+        <button class="btn btn-outline" onclick="showScreen('onboard1')">Back</button>
+        <button class="btn btn-primary" onclick="showScreen('onboard3')">Next</button>
+      </div>
+    </div>
+    <div class="screen" id="screen-onboard3">
+      <img class="onboard-img" id="onb3img" alt="">
+      <h2 style="margin-bottom:6px">Track & review</h2>
+      <p class="muted">Follow your booking status and rate the service after.</p>
+      <div class="dot-row"><div class="dot"></div><div class="dot"></div><div class="dot active"></div></div>
+      <div class="row" style="margin-top:12px">
+        <button class="btn btn-outline" onclick="showScreen('onboard2')">Back</button>
+        <button class="btn btn-primary" onclick="showScreen('register')">Create Account</button>
+      </div>
+    </div>
+
+    <!-- LOGIN -->
+    <div class="screen" id="screen-login">
+      <h2 style="margin:20px 0 4px">Welcome back</h2>
+      <p class="muted" style="margin-bottom:20px">Log in to your FixDali account</p>
+      <div class="field"><label>Email</label><input class="input" id="loginEmail" value="ashley@fixdali.test"></div>
+      <div class="field"><label>Password</label><input class="input" type="password" id="loginPass" value="Password123!"></div>
+      <button class="btn btn-primary" onclick="doLogin()">Log In</button>
+      <div style="text-align:center;margin:14px 0"><a onclick="showScreen('forgot')" style="color:var(--primary);font-size:13px;cursor:pointer">Forgot password?</a></div>
+      <div style="text-align:center;font-size:13px;color:var(--muted)">No account? <a onclick="showScreen('register')" style="color:var(--primary);cursor:pointer">Sign up</a></div>
+      <div class="divider"></div>
+      <button class="btn btn-outline" onclick="showScreen('adminLogin')">Admin Login</button>
+    </div>
+
+    <!-- REGISTER -->
+    <div class="screen" id="screen-register">
+      <h2 style="margin:20px 0 4px">Create account</h2>
+      <p class="muted" style="margin-bottom:20px">Join FixDali today</p>
+      <div class="field"><label>Full name</label><input class="input" id="regName" value="Ashley Reyes"></div>
+      <div class="field"><label>Email</label><input class="input" id="regEmail" value="ashley@fixdali.test"></div>
+      <div class="field"><label>Phone</label><input class="input" id="regPhone" value="09171234567"></div>
+      <div class="field"><label>Password</label><input class="input" type="password" id="regPass" value="Password123!"></div>
+      <button class="btn btn-primary" onclick="doRegister()">Create Account</button>
+      <div style="text-align:center;margin:14px 0;font-size:13px;color:var(--muted)">Already have an account? <a onclick="showScreen('login')" style="color:var(--primary);cursor:pointer">Log in</a></div>
+    </div>
+
+    <!-- FORGOT -->
+    <div class="screen" id="screen-forgot">
+      <h2 style="margin:20px 0 4px">Forgot password</h2>
+      <p class="muted" style="margin-bottom:20px">Enter your email to receive a reset link.</p>
+      <div class="field"><label>Email</label><input class="input" value="ashley@fixdali.test"></div>
+      <button class="btn btn-primary" onclick="toast('Reset link sent!');showScreen('login')">Send Reset Link</button>
+    </div>
+
+    <!-- ADMIN LOGIN -->
+    <div class="screen" id="screen-adminLogin">
+      <h2 style="margin:20px 0 4px">Admin Login</h2>
+      <p class="muted" style="margin-bottom:20px">FixDali administrator portal</p>
+      <div class="field"><label>Username</label><input class="input" value="admin"></div>
+      <div class="field"><label>Password</label><input class="input" type="password" value="Admin@2026!"></div>
+      <button class="btn btn-primary" onclick="showScreen('adminDash')">Log In as Admin</button>
+      <div style="text-align:center;margin:14px 0;font-size:13px;color:var(--muted)"><a onclick="showScreen('login')" style="color:var(--primary);cursor:pointer">Back to user login</a></div>
+    </div>
+
+    <!-- HOME -->
+    <div class="screen" id="screen-home">
+      <div class="hero">
+        <h2>Hi, Ashley 👋</h2>
+        <p>What needs fixing today?</p>
+      </div>
+      <div class="searchbar">
+        <input class="input" placeholder="Search services or technicians..." id="searchInput" oninput="filterTechs()">
+        <button class="btn btn-primary btn-sm" style="width:auto" onclick="toast('Search')">🔍</button>
+      </div>
+      <div class="section-title">Categories</div>
+      <div class="cat-grid" id="catGrid"></div>
+      <div class="section-title">Featured Technicians</div>
+      <div id="featuredList"></div>
+      <div class="section-title">Recent Bookings</div>
+      <div id="recentBookings"></div>
+    </div>
+
+    <!-- SERVICES / TECH LIST -->
+    <div class="screen" id="screen-services">
+      <div class="tabbar" id="catTabs"></div>
+      <div id="techList"></div>
+    </div>
+
+    <!-- TECH DETAIL -->
+    <div class="screen" id="screen-techDetail">
+      <div id="techDetailContent"></div>
+    </div>
+
+    <!-- BOOKING FLOW -->
+    <div class="screen" id="screen-booking">
+      <h2 style="margin-bottom:4px">Book Service</h2>
+      <p class="muted" style="margin-bottom:16px" id="bookingTechName"></p>
+      <div class="field"><label>Service</label>
+        <select class="input" id="bookService"></select>
+      </div>
+      <div class="field"><label>Date</label><input class="input" type="date" id="bookDate" value="2026-11-20"></div>
+      <div class="field"><label>Time</label>
+        <select class="input" id="bookTime">
+          <option>8:00 AM</option><option>9:00 AM</option><option selected>10:00 AM</option><option>1:00 PM</option><option>2:00 PM</option><option>4:00 PM</option>
+        </select>
+      </div>
+      <div class="field"><label>Address</label>
+        <select class="input" id="bookAddr"></select>
+      </div>
+      <div class="field"><label>Notes (optional)</label><textarea class="input" rows="3" placeholder="Describe the issue..."></textarea></div>
+      <div class="field"><label>Payment method</label>
+        <select class="input" id="bookPay"></select>
+      </div>
+      <div class="card">
+        <div class="row"><span class="muted">Service fee</span><span id="bookFee" style="margin-left:auto;font-weight:700">₱450</span></div>
+        <div class="row"><span class="muted">Platform fee</span><span style="margin-left:auto;font-weight:700">₱25</span></div>
+        <div class="divider"></div>
+        <div class="row"><span style="font-weight:700">Total</span><span id="bookTotal" style="margin-left:auto;font-weight:800;color:var(--primary)">₱475</span></div>
+      </div>
+      <button class="btn btn-primary" onclick="confirmBooking()">Confirm Booking</button>
+    </div>
+
+    <!-- BOOKING CONFIRMED -->
+    <div class="screen" id="screen-bookingConfirmed">
+      <div style="text-align:center;padding:40px 0">
+        <div style="font-size:64px;margin-bottom:12px">✅</div>
+        <h2>Booking Confirmed!</h2>
+        <p class="muted" style="margin:8px 0 20px">Your technician will contact you shortly.</p>
+        <div class="card" style="text-align:left">
+          <div class="row"><span class="muted">Booking ID</span><span style="margin-left:auto;font-weight:700" id="confId">BK-1001</span></div>
+          <div class="row"><span class="muted">Technician</span><span style="margin-left:auto;font-weight:700" id="confTech">Juan Dela Cruz</span></div>
+          <div class="row"><span class="muted">Date & Time</span><span style="margin-left:auto;font-weight:700" id="confDT">Nov 20, 2026 · 10:00 AM</span></div>
+          <div class="row"><span class="muted">Total</span><span style="margin-left:auto;font-weight:800;color:var(--primary)" id="confTotal">₱475</span></div>
+        </div>
+        <button class="btn btn-primary" onclick="showScreen('bookings')" style="margin-top:12px">View My Bookings</button>
+        <button class="btn btn-outline" onclick="showScreen('home')" style="margin-top:8px">Back to Home</button>
+      </div>
+    </div>
+
+    <!-- MY BOOKINGS -->
+    <div class="screen" id="screen-bookings">
+      <h2 style="margin-bottom:12px">My Bookings</h2>
+      <div class="tabbar">
+        <button class="active" onclick="filterBookings('all',this)">All</button>
+        <button onclick="filterBookings('upcoming',this)">Upcoming</button>
+        <button onclick="filterBookings('completed',this)">Done</button>
+        <button onclick="filterBookings('cancelled',this)">Cancelled</button>
+      </div>
+      <div id="bookingsList"></div>
+    </div>
+
+    <!-- BOOKING DETAIL -->
+    <div class="screen" id="screen-bookingDetail">
+      <div id="bookingDetailContent"></div>
+    </div>
+
+    <!-- MESSAGES LIST -->
+    <div class="screen" id="screen-messages">
+      <h2 style="margin-bottom:12px">Messages</h2>
+      <div id="messagesList"></div>
+    </div>
+
+    <!-- CHAT -->
+    <div class="screen" id="screen-chat">
+      <div id="chatContent" style="display:flex;flex-direction:column;height:100%"></div>
+    </div>
+
+    <!-- NOTIFICATIONS -->
+    <div class="screen" id="screen-notifications">
+      <h2 style="margin-bottom:12px">Notifications</h2>
+      <div id="notifList"></div>
+    </div>
+
+    <!-- PROFILE -->
+    <div class="screen" id="screen-profile">
+      <div style="text-align:center;padding:20px 0">
+        <img class="avatar-lg" id="profAvatar" alt="">
+        <h3 id="profName">Ashley Reyes</h3>
+        <p class="muted" id="profEmail">ashley@fixdali.test</p>
+      </div>
+      <div class="card">
+        <div class="section-title" style="margin-top:0">Saved Addresses</div>
+        <div id="addrList"></div>
+        <button class="btn btn-outline btn-sm" onclick="toast('Add address (demo)')" style="margin-top:8px">+ Add Address</button>
+      </div>
+      <div class="card">
+        <div class="section-title" style="margin-top:0">Payment Methods</div>
+        <div id="payList"></div>
+        <button class="btn btn-outline btn-sm" onclick="toast('Add payment (demo)')" style="margin-top:8px">+ Add Payment</button>
+      </div>
+      <div class="card">
+        <div class="toggle"><span class="label">Push notifications</span><div class="switch on" onclick="this.classList.toggle('on')"></div></div>
+        <div class="toggle"><span class="label">Email receipts</span><div class="switch on" onclick="this.classList.toggle('on')"></div></div>
+        <div class="toggle"><span class="label">Dark mode</span><div class="switch" onclick="this.classList.toggle('on')"></div></div>
+      </div>
+      <button class="btn btn-danger" onclick="showScreen('login')">Log Out</button>
+    </div>
+
+    <!-- ADMIN DASHBOARD -->
+    <div class="screen" id="screen-adminDash">
+      <h2 style="margin-bottom:12px">Admin Dashboard</h2>
+      <div class="stat-grid" id="adminStats"></div>
+      <div class="section-title">Recent Bookings</div>
+      <div id="adminBookings"></div>
+      <div class="section-title">Quick Actions</div>
+      <div class="row" style="gap:8px">
+        <button class="btn btn-outline" onclick="toast('Manage technicians')">Technicians</button>
+        <button class="btn btn-outline" onclick="toast('View reports')">Reports</button>
+      </div>
+      <button class="btn btn-danger" style="margin-top:12px" onclick="showScreen('login')">Log Out</button>
+    </div>
+  </div>
+
+  <div class="bottomnav" id="bottomNav">
+    <button onclick="showScreen('home')" data-screen="home" class="active"><span class="ico">🏠</span>Home</button>
+    <button onclick="showScreen('bookings')" data-screen="bookings"><span class="ico">📅</span>Bookings</button>
+    <button onclick="showScreen('messages')" data-screen="messages"><span class="ico">💬</span>Messages</button>
+    <button onclick="showScreen('profile')" data-screen="profile"><span class="ico">👤</span>Profile</button>
+  </div>
+  <div class="toast" id="toast"></div>
+  <div class="modal-backdrop" id="modalBackdrop" onclick="closeModal(event)">
+    <div class="modal" id="modalContent"></div>
+  </div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

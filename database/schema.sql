@@ -1,0 +1,52 @@
+CREATE DATABASE IF NOT EXISTS fixdali CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE fixdali;
+
+CREATE TABLE IF NOT EXISTS users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  email VARCHAR(120) NOT NULL UNIQUE,
+  phone VARCHAR(30),
+  password_hash VARCHAR(255) NOT NULL,
+  role ENUM('user','admin') NOT NULL DEFAULT 'user',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS technicians (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  cat VARCHAR(30) NOT NULL,
+  bio TEXT,
+  avatar VARCHAR(255),
+  rating DECIMAL(3,1) DEFAULT 4.5,
+  reviews INT DEFAULT 0,
+  price INT NOT NULL,
+  jobs INT DEFAULT 0,
+  exp VARCHAR(20),
+  available TINYINT(1) DEFAULT 1,
+  verified TINYINT(1) DEFAULT 1
+);
+
+CREATE TABLE IF NOT EXISTS bookings (
+  id VARCHAR(20) PRIMARY KEY,
+  user_id INT NOT NULL,
+  tech_id INT NOT NULL,
+  service VARCHAR(100) NOT NULL,
+  booking_date VARCHAR(30) NOT NULL,
+  booking_time VARCHAR(20) NOT NULL,
+  status VARCHAR(20) NOT NULL DEFAULT 'pending',
+  address VARCHAR(255),
+  price INT NOT NULL,
+  img VARCHAR(255),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (tech_id) REFERENCES technicians(id)
+);
+
+CREATE TABLE IF NOT EXISTS messages (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  tech_id INT NOT NULL,
+  sender ENUM('user','tech') NOT NULL,
+  text TEXT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
