@@ -24,6 +24,7 @@ const CATEGORIES = [
 ];
 
 const TECHNICIANS = [
+<<<<<<< HEAD
   { id:1, name:"Juan Dela Cruz", cat:"plumbing", rating:4.9, reviews:128, price:450, exp:"8 yrs", hours:"8:00 AM – 5:00 PM", avatar:IMG(SAMPLE_IMAGES[0]), bio:"Licensed plumber specializing in leak repair, pipe installation and water heater servicing.", available:true, verified:true, jobs:340 },
   { id:2, name:"Maria Santos", cat:"electrical", rating:4.8, reviews:96, price:500, exp:"6 yrs", hours:"9:00 AM – 6:00 PM", avatar:IMG(SAMPLE_IMAGES[1]), bio:"Certified electrician. Residential wiring, panel upgrades and lighting installation.", available:true, verified:true, jobs:210 },
   { id:3, name:"Pedro Reyes", cat:"carpentry", rating:4.7, reviews:74, price:400, exp:"10 yrs", hours:"8:00 AM – 3:00 PM", avatar:IMG(SAMPLE_IMAGES[2]), bio:"Custom furniture, cabinet making and general woodwork.", available:false, verified:true, jobs:185 },
@@ -32,6 +33,16 @@ const TECHNICIANS = [
   { id:6, name:"Liza Gomez", cat:"cleaning", rating:4.8, reviews:88, price:300, exp:"4 yrs", hours:"6:00 AM – 2:00 PM", avatar:IMG(SAMPLE_IMAGES[5]), bio:"Deep cleaning, move-in/out cleaning and sanitation services.", available:true, verified:true, jobs:320 },
   { id:7, name:"Mark Villanueva", cat:"appliance", rating:4.5, reviews:51, price:450, exp:"9 yrs", hours:"11:00 AM – 8:00 PM", avatar:IMG(SAMPLE_IMAGES[6]), bio:"Washing machine, refrigerator and oven repair.", available:true, verified:true, jobs:175 },
   { id:8, name:"Rosa Mendoza", cat:"pest", rating:4.7, reviews:44, price:550, exp:"6 yrs", hours:"8:00 AM – 5:00 PM", avatar:IMG(SAMPLE_IMAGES[7]), bio:"Termite treatment, general pest control and fumigation.", available:false, verified:true, jobs:98 },
+=======
+  { id:1, name:"Juan Dela Cruz", cat:"plumbing", rating:4.9, reviews:128, price:450, exp:"8 yrs", avatar:IMG(SAMPLE_IMAGES[0]), bio:"Licensed plumber specializing in leak repair, pipe installation and water heater servicing.", available:true, verified:true, jobs:340 },
+  { id:2, name:"Maria Santos", cat:"electrical", rating:4.8, reviews:96, price:500, exp:"6 yrs", avatar:IMG(SAMPLE_IMAGES[1]), bio:"Certified electrician. Residential wiring, panel upgrades and lighting installation.", available:true, verified:true, jobs:210 },
+  { id:3, name:"Pedro Reyes", cat:"carpentry", rating:4.7, reviews:74, price:400, exp:"10 yrs", avatar:IMG(SAMPLE_IMAGES[2]), bio:"Custom furniture, cabinet making and general woodwork.", available:false, verified:true, jobs:185 },
+  { id:4, name:"Ana Lim", cat:"painting", rating:4.9, reviews:112, price:350, exp:"5 yrs", avatar:IMG(SAMPLE_IMAGES[3]), bio:"Interior/exterior painting, wallpaper and texture finishing.", available:true, verified:true, jobs:260 },
+  { id:5, name:"Carlos Tan", cat:"ac", rating:4.6, reviews:63, price:600, exp:"7 yrs", avatar:IMG(SAMPLE_IMAGES[4]), bio:"AC cleaning, installation and repair for split and window units.", available:true, verified:false, jobs:140 },
+  { id:6, name:"Liza Gomez", cat:"cleaning", rating:4.8, reviews:88, price:300, exp:"4 yrs", avatar:IMG(SAMPLE_IMAGES[5]), bio:"Deep cleaning, move-in/out cleaning and sanitation services.", available:true, verified:true, jobs:320 },
+  { id:7, name:"Mark Villanueva", cat:"appliance", rating:4.5, reviews:51, price:450, exp:"9 yrs", avatar:IMG(SAMPLE_IMAGES[6]), bio:"Washing machine, refrigerator and oven repair.", available:true, verified:true, jobs:175 },
+  { id:8, name:"Rosa Mendoza", cat:"pest", rating:4.7, reviews:44, price:550, exp:"6 yrs", avatar:IMG(SAMPLE_IMAGES[7]), bio:"Termite treatment, general pest control and fumigation.", available:false, verified:true, jobs:98 },
+>>>>>>> bf7742a3e881524d3e45dbdd2e06e540a9adc829
 ];
 
 const REVIEWS = [
@@ -76,7 +87,10 @@ const ADDRESSES = [
 const PAYMENTS = [
   { id:1, type:"GCash", value:"0917****1234", primary:true },
   { id:2, type:"Card", value:"**** **** **** 4242", primary:false },
+<<<<<<< HEAD
   { id:3, type:"Cash", value:"Pay technician after service", primary:false },
+=======
+>>>>>>> bf7742a3e881524d3e45dbdd2e06e540a9adc829
 ];
 
 const USER = { name:"Ashley Reyes", email:"ashley@fixdali.test", phone:"09171234567", avatar:IMG(SAMPLE_IMAGES[2]) };
@@ -93,6 +107,10 @@ const ADMIN_BOOKINGS = [
   { id:"BK-1002", customer:"Mark T.", tech:"Maria S.", status:"completed", price:500 },
   { id:"BK-1003", customer:"Liza G.", tech:"Ana L.", status:"pending", price:3500 },
   { id:"BK-1005", customer:"Carlo M.", tech:"Carlos T.", status:"in-progress", price:600 },
+<<<<<<< HEAD
 ];
 
 const ADMIN_AI = { freeScansUsed:"238", subscribers:"100", mrr:"₱4,900", price:"₱49/month" };
+=======
+];
+>>>>>>> bf7742a3e881524d3e45dbdd2e06e540a9adc829

@@ -3,7 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<<<<<<< HEAD
 <title>FixDali — Home repair, made easy</title>
+=======
+<title>FixDali - Home Repair Booking</title>
+>>>>>>> bf7742a3e881524d3e45dbdd2e06e540a9adc829
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -70,7 +74,10 @@
       <div style="text-align:center;font-size:13px;color:var(--muted)">No account? <a onclick="showScreen('register')" style="color:var(--primary);cursor:pointer">Sign up</a></div>
       <div class="divider"></div>
       <button class="btn btn-outline" onclick="showScreen('adminLogin')">Admin Login</button>
+<<<<<<< HEAD
       <button class="btn btn-outline role-login-btn" onclick="showScreen('workerLogin')">Worker Login</button>
+=======
+>>>>>>> bf7742a3e881524d3e45dbdd2e06e540a9adc829
     </div>
 
     <!-- REGISTER -->
@@ -105,6 +112,7 @@
 
     <!-- HOME -->
     <div class="screen" id="screen-home">
+<<<<<<< HEAD
       <div class="hero hero-home">
         <div class="eyebrow">YOUR HOME, SORTED</div>
         <h2>Hi, Ashley <span aria-hidden="true">👋</span></h2>
@@ -116,13 +124,23 @@
         <span class="photo-cta-copy"><strong>Not sure what service you need?</strong><small>Send a photo and we’ll point you in the right direction.</small></span>
         <span class="photo-cta-arrow">›</span>
       </button>
+=======
+      <div class="hero">
+        <h2>Hi, Ashley 👋</h2>
+        <p>What needs fixing today?</p>
+      </div>
+>>>>>>> bf7742a3e881524d3e45dbdd2e06e540a9adc829
       <div class="searchbar">
         <input class="input" placeholder="Search services or technicians..." id="searchInput" oninput="filterTechs()">
         <button class="btn btn-primary btn-sm" style="width:auto" onclick="toast('Search')">🔍</button>
       </div>
       <div class="section-title">Categories</div>
       <div class="cat-grid" id="catGrid"></div>
+<<<<<<< HEAD
       <div class="section-title worker-directory-heading"><span>Workers near you</span><button class="text-button" onclick="showScreen('services')">See all</button></div>
+=======
+      <div class="section-title">Featured Technicians</div>
+>>>>>>> bf7742a3e881524d3e45dbdd2e06e540a9adc829
       <div id="featuredList"></div>
       <div class="section-title">Recent Bookings</div>
       <div id="recentBookings"></div>
@@ -134,6 +152,7 @@
       <div id="techList"></div>
     </div>
 
+<<<<<<< HEAD
     <!-- PHOTO TRIAGE -->
     <div class="screen" id="screen-photoAssist">
       <div class="triage-intro">
@@ -175,6 +194,8 @@
       <div id="workerDashContent"></div>
     </div>
 
+=======
+>>>>>>> bf7742a3e881524d3e45dbdd2e06e540a9adc829
     <!-- TECH DETAIL -->
     <div class="screen" id="screen-techDetail">
       <div id="techDetailContent"></div>
@@ -200,7 +221,10 @@
       <div class="field"><label>Payment method</label>
         <select class="input" id="bookPay"></select>
       </div>
+<<<<<<< HEAD
       <div class="payment-note">Cash is accepted. Pay your technician after the service is completed.</div>
+=======
+>>>>>>> bf7742a3e881524d3e45dbdd2e06e540a9adc829
       <div class="card">
         <div class="row"><span class="muted">Service fee</span><span id="bookFee" style="margin-left:auto;font-weight:700">₱450</span></div>
         <div class="row"><span class="muted">Platform fee</span><span style="margin-left:auto;font-weight:700">₱25</span></div>
@@ -288,9 +312,14 @@
 
     <!-- ADMIN DASHBOARD -->
     <div class="screen" id="screen-adminDash">
+<<<<<<< HEAD
       <div class="admin-heading"><div><div class="eyebrow">OPERATIONS OVERVIEW</div><h2>Admin Dashboard</h2><p class="muted">Keep bookings, workers, and subscriptions moving.</p></div><span class="admin-live">● Live</span></div>
       <div class="stat-grid" id="adminStats"></div>
       <div id="adminAiCard"></div>
+=======
+      <h2 style="margin-bottom:12px">Admin Dashboard</h2>
+      <div class="stat-grid" id="adminStats"></div>
+>>>>>>> bf7742a3e881524d3e45dbdd2e06e540a9adc829
       <div class="section-title">Recent Bookings</div>
       <div id="adminBookings"></div>
       <div class="section-title">Quick Actions</div>
@@ -317,4 +346,8 @@
 <script src="js/data.js"></script>
 <script src="js/app.js"></script>
 </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> bf7742a3e881524d3e45dbdd2e06e540a9adc829

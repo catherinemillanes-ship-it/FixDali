@@ -7,11 +7,16 @@ let bookingFilter = 'all';
 let chatTech = null;
 let selectedBooking = null;
 let currentUser = null;
+<<<<<<< HEAD
 let currentWorker = null;
 let workerChatBooking = null;
 let workerAvailable = true;
 
 const NO_NAV_SCREENS = ['splash','onboard1','onboard2','onboard3','login','register','forgot','adminLogin','workerLogin','booking','bookingConfirmed','techDetail','chat','bookingDetail','workerDash'];
+=======
+
+const NO_NAV_SCREENS = ['splash','onboard1','onboard2','onboard3','login','register','forgot','adminLogin','booking','bookingConfirmed','techDetail','chat','bookingDetail'];
+>>>>>>> bf7742a3e881524d3e45dbdd2e06e540a9adc829
 const NO_APPBAR_SCREENS = ['splash'];
 const FULL_SCREENS = ['splash','onboard1','onboard2','onboard3'];
 
@@ -52,9 +57,15 @@ function updateChrome(name){
   const appbar = $('appbar');
   appbar.style.display = NO_APPBAR_SCREENS.includes(name) ? 'none' : 'flex';
   const back = $('backBtn');
+<<<<<<< HEAD
   const showBack = !['home','splash','login','register','adminDash','workerDash'].includes(name) && !NO_APPBAR_SCREENS.includes(name);
   back.style.display = showBack ? 'flex' : 'none';
   const titles = {home:'FixDali',services:'Services',photoAssist:'Fix by photo',techDetail:'Technician',booking:'Book Service',bookingConfirmed:'Confirmed',bookings:'My Bookings',bookingDetail:'Booking Detail',messages:'Messages',chat:'Chat',notifications:'Notifications',profile:'Profile',adminDash:'Admin',workerLogin:'Worker Login',workerDash:'Partner Dashboard',login:'Log In',register:'Sign Up',forgot:'Forgot Password',adminLogin:'Admin Login',onboard1:'Welcome',onboard2:'Welcome',onboard3:'Welcome',splash:'FixDali'};
+=======
+  const showBack = !['home','splash','login','register','adminDash'].includes(name) && !NO_APPBAR_SCREENS.includes(name);
+  back.style.display = showBack ? 'flex' : 'none';
+  const titles = {home:'FixDali',services:'Services',techDetail:'Technician',booking:'Book Service',bookingConfirmed:'Confirmed',bookings:'My Bookings',bookingDetail:'Booking Detail',messages:'Messages',chat:'Chat',notifications:'Notifications',profile:'Profile',adminDash:'Admin',login:'Log In',register:'Sign Up',forgot:'Forgot Password',adminLogin:'Admin Login',onboard1:'Welcome',onboard2:'Welcome',onboard3:'Welcome',splash:'FixDali'};
+>>>>>>> bf7742a3e881524d3e45dbdd2e06e540a9adc829
   $('appTitle').textContent = titles[name] || 'FixDali';
   document.querySelectorAll('.bottomnav button').forEach(b=> b.classList.toggle('active', b.dataset.screen === name));
 }
@@ -72,8 +83,11 @@ function onScreenShow(name){
     case 'notifications': renderNotifications(); break;
     case 'profile': renderProfile(); break;
     case 'adminDash': renderAdmin(); break;
+<<<<<<< HEAD
     case 'workerDash': renderWorkerDashboard(); break;
     case 'photoAssist': renderScanQuota(); break;
+=======
+>>>>>>> bf7742a3e881524d3e45dbdd2e06e540a9adc829
     case 'onboard1': setOnboardImgs(); break;
   }
 }
@@ -96,7 +110,11 @@ async function renderHome(){
   let techs = await api('api/technicians.php');
   if(!techs) techs = TECHNICIANS;
   window._techs = techs;
+<<<<<<< HEAD
   const featured = techs;
+=======
+  const featured = techs.filter(t=>t.available==1||t.available===true).slice(0,4);
+>>>>>>> bf7742a3e881524d3e45dbdd2e06e540a9adc829
   const fl = $('featuredList');
   if(fl) fl.innerHTML = featured.map(t=>techCard(t)).join('');
   // bookings
@@ -135,7 +153,10 @@ function techCard(t){
     <div class="info">
       <div class="name">${name} ${verified?'<span style="color:var(--success)">✓</span>':''}</div>
       <div class="sub">${cat} · ${exp} exp</div>
+<<<<<<< HEAD
       <div class="hours-line">◷ ${t.hours||'By appointment'} · <span class="worker-availability-text ${t.available==1||t.available===true?'is-open':''}">${t.available==1||t.available===true?'Available today':'Currently busy'}</span></div>
+=======
+>>>>>>> bf7742a3e881524d3e45dbdd2e06e540a9adc829
       <div class="stars">${'★'.repeat(Math.round(rating))} <span style="color:var(--muted)">${rating} (${reviews})</span></div>
     </div>
     <div style="text-align:right">
@@ -192,7 +213,10 @@ async function renderTechDetail(){
       <img class="avatar-lg" src="${t.avatar&&t.avatar.startsWith('assets')?t.avatar:'assets/images/'+(t.avatar||'')}" alt="">
       <h3>${t.name} ${t.verified==1||t.verified===true?'<span style="color:var(--success)">✓ Verified</span>':''}</h3>
       <p class="muted">${catName(t.cat)} · ${t.exp} experience</p>
+<<<<<<< HEAD
       <div class="hours-pill">◷ Service hours: ${t.hours||'By appointment'}</div>
+=======
+>>>>>>> bf7742a3e881524d3e45dbdd2e06e540a9adc829
       <div class="rating-big">${t.rating} ★</div>
       <div class="muted">${t.reviews} reviews · ${t.jobs} jobs done</div>
     </div>
@@ -229,7 +253,11 @@ async function renderBooking(){
   const svcs = t ? [ (t.cat||'')+' service', 'Inspection', 'Emergency repair'] : [];
   $('bookService').innerHTML = svcs.map(s=>`<option>${s}</option>`).join('');
   $('bookAddr').innerHTML = ADDRESSES.map(a=>`<option>${a.label}: ${a.value}</option>`).join('');
+<<<<<<< HEAD
   $('bookPay').innerHTML = PAYMENTS.map(p=>`<option value="${p.type}">${p.type} · ${p.value}</option>`).join('');
+=======
+  $('bookPay').innerHTML = PAYMENTS.map(p=>`<option>${p.type} ${p.value}</option>`).join('');
+>>>>>>> bf7742a3e881524d3e45dbdd2e06e540a9adc829
   const fee = t?t.price:450;
   $('bookFee').textContent = '₱'+fee;
   $('bookTotal').textContent = '₱'+(fee+25);
@@ -246,13 +274,21 @@ async function confirmBooking(){
     time: $('bookTime').value,
     address: $('bookAddr').value.split(': ').slice(1).join(': ') || $('bookAddr').value,
     price: (t?t.price:450)+25,
+<<<<<<< HEAD
     img: t ? (t.avatar||'').split('/').pop() : SAMPLE_IMAGES[0],
     payment_method: $('bookPay').value || 'Cash'
+=======
+    img: t ? (t.avatar||'').split('/').pop() : SAMPLE_IMAGES[0]
+>>>>>>> bf7742a3e881524d3e45dbdd2e06e540a9adc829
   };
   const res = await api('api/bookings.php', {method:'POST', body: JSON.stringify(body)});
   const newId = res && res.id ? res.id : id;
   // local list update
+<<<<<<< HEAD
   BOOKINGS.unshift({id:newId, tech:selectedTech, service:body.service, date:body.date, time:body.time, status:'pending', address:body.address, price:body.price, img:body.img, payment_method:body.payment_method});
+=======
+  BOOKINGS.unshift({id:newId, tech:selectedTech, service:body.service, date:body.date, time:body.time, status:'pending', address:body.address, price:body.price, img:body.img});
+>>>>>>> bf7742a3e881524d3e45dbdd2e06e540a9adc829
   $('confId').textContent = newId;
   $('confTech').textContent = t?t.name:'';
   $('confDT').textContent = body.date+' · '+body.time;
@@ -338,7 +374,10 @@ async function renderBookingDetail(){
       <div class="row"><span class="muted">Date</span><span style="margin-left:auto">${date}</span></div>
       <div class="row"><span class="muted">Time</span><span style="margin-left:auto">${time}</span></div>
       <div class="row"><span class="muted">Address</span><span style="margin-left:auto;text-align:right;max-width:60%">${address}</span></div>
+<<<<<<< HEAD
       <div class="row"><span class="muted">Payment</span><span style="margin-left:auto;text-align:right">${b.payment_method||'Cash'}</span></div>
+=======
+>>>>>>> bf7742a3e881524d3e45dbdd2e06e540a9adc829
       <div class="row"><span class="muted">Total</span><span style="margin-left:auto;font-weight:800;color:var(--primary)">₱${b.price}</span></div>
     </div>
     <div class="card">
@@ -419,6 +458,7 @@ function sendMsg(){
   },1200);
 }
 
+<<<<<<< HEAD
 // ---------- PHOTO TRIAGE ----------
 let selectedPhoto = null;
 function scanUsage(){ return Number(localStorage.getItem('fixdali_scan_usage')||0); }
@@ -512,6 +552,8 @@ async function analyzePhoto(){
   toast('Service match ready');
 }
 
+=======
+>>>>>>> bf7742a3e881524d3e45dbdd2e06e540a9adc829
 // ---------- NOTIFICATIONS ----------
 async function renderNotifications(){
   const list = await api('api/notifications.php');
@@ -539,6 +581,7 @@ function renderProfile(){
 }
 
 // ---------- ADMIN ----------
+<<<<<<< HEAD
 function doWorkerLogin(){
   const email = ($('workerEmail').value||'').trim().toLowerCase();
   const worker = TECHNICIANS.find(t=>t.id===1) || TECHNICIANS[0];
@@ -617,6 +660,11 @@ async function renderAdmin(){
   if(stats) stats.innerHTML = ADMIN_STATS.map(s=>`<div class="stat"><div class="val">${s.val}</div><div class="lbl">${s.lbl}</div></div>`).join('');
   const aiCard=$('adminAiCard');
   if(aiCard) aiCard.innerHTML=`<div class="admin-ai-card"><div class="admin-ai-top"><div><div class="eyebrow">RECURRING REVENUE</div><h3>AI Scanning Subscription</h3><p>3 free scans per user, then AI Scan Plus at ${ADMIN_AI.price}.</p></div><span class="ai-spark">✦</span></div><div class="admin-ai-metrics"><div><strong>${ADMIN_AI.subscribers}</strong><span>Subscribers</span></div><div><strong>${ADMIN_AI.mrr}</strong><span>Monthly revenue</span></div><div><strong>${ADMIN_AI.freeScansUsed}</strong><span>Free scans used</span></div></div></div>`;
+=======
+async function renderAdmin(){
+  const stats = $('adminStats');
+  if(stats) stats.innerHTML = ADMIN_STATS.map(s=>`<div class="stat"><div class="val">${s.val}</div><div class="lbl">${s.lbl}</div></div>`).join('');
+>>>>>>> bf7742a3e881524d3e45dbdd2e06e540a9adc829
   let bks = await api('api/bookings.php');
   if(!bks) bks = (window._bookings||BOOKINGS);
   const ab = $('adminBookings');
@@ -669,4 +717,8 @@ function onRightBtn(){
 
 document.addEventListener('DOMContentLoaded', ()=>{
   setOnboardImgs();
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> bf7742a3e881524d3e45dbdd2e06e540a9adc829

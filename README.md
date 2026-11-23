@@ -26,12 +26,15 @@ Double-click `index.html` (images load relative to the file).
 - In-app chat with technician
 - Notifications, profile, addresses & payment methods
 - Admin dashboard with stats & booking management
+<<<<<<< HEAD
 - **Fix by photo** triage: upload or capture a home issue photo, add notes, get a recommended service, and jump to matching technicians
 - Mobile-first refreshed UI with clearer hierarchy, touch targets, and service-matching CTA
 - Worker dashboard with assigned service requests, profile editing, customer chat, and service confirmation
 - Complete worker directory across services with availability and service hours
 - AI scanning plan: 3 free scans per user, then AI Scan Plus at ₱49/month
 - Cash payment option alongside GCash and Card
+=======
+>>>>>>> bf7742a3e881524d3e45dbdd2e06e540a9adc829
 
 ## Project layout
 ```
@@ -44,6 +47,7 @@ FixDali/
   README.md
 ```
 
+<<<<<<< HEAD
 ## Enable live photo recognition
 
 The photo flow works immediately in demo mode. For real image understanding in XAMPP, copy `config.example.php` to `config.php`, put your server-side vision key in `FIXDALI_OPENAI_API_KEY`, and keep `config.php` out of version control. The browser never receives the key. If the PHP endpoint or key is unavailable, the app automatically falls back to the user’s note and filename keywords and still returns a technician match.
@@ -51,3 +55,8 @@ The photo flow works immediately in demo mode. For real image understanding in X
 Sample images are placeholders provided by the client. Replace with real assets for production.
 
 For an existing database, run `database/migrations/001_add_payment_method.sql` once before using the booking payment field.
+=======
+## Notes
+Sample images are placeholders provided by the client. Replace with real
+assets for production. This is a front-end prototype only (no backend).
+>>>>>>> bf7742a3e881524d3e45dbdd2e06e540a9adc829

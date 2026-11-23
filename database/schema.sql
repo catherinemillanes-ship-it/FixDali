@@ -36,7 +36,10 @@ CREATE TABLE IF NOT EXISTS bookings (
   status VARCHAR(20) NOT NULL DEFAULT 'pending',
   address VARCHAR(255),
   price INT NOT NULL,
+<<<<<<< HEAD
   payment_method VARCHAR(40) NOT NULL DEFAULT 'Cash',
+=======
+>>>>>>> bf7742a3e881524d3e45dbdd2e06e540a9adc829
   img VARCHAR(255),
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (user_id) REFERENCES users(id),
@@ -50,4 +53,8 @@ CREATE TABLE IF NOT EXISTS messages (
   sender ENUM('user','tech') NOT NULL,
   text TEXT NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+<<<<<<< HEAD
 );
+=======
+);
+>>>>>>> bf7742a3e881524d3e45dbdd2e06e540a9adc829
